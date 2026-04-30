@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youth Talk & Solve</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { background:#f4f7fb; color:#333; }
+
+/* HEADER */
+header {
+  background: rgba(0,0,0,0.7);
+  padding: 15px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo { display:flex; align-items:center; gap:10px; color:white; }
+.logo img { height:50px; }
+nav a { color:white; margin-left:20px; text-decoration:none; }
+
+/* HERO */
+.hero {
+  position:relative;
+  height:90vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  background: url('logo.jpeg') no-repeat center/cover;
+}
+.hero::before {
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+}
+.hero-content { position:relative; z-index:2; max-width:900px; }
+.hero h2 { font-size:45px; margin-bottom:20px; }
+.hero p { color:#f1f1f1; line-height:1.7; }
+.hero button {
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  background:#4facfe;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* SECTION */
+.section { padding:60px 20px; max-width:1100px; margin:auto; }
+
+/* CARDS */
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:20px;
+}
+.card {
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  cursor:pointer;
+}
+.card:hover { transform:translateY(-10px); background:#f0f8ff; }
+.details {
+  display:none;
+  margin-top:15px;
+  line-height:1.7;
+  text-align:justify;
+}
+
+/* FORM */
+form input, form textarea, form select {
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  width:100%;
+  margin-bottom:12px;
+}
+form button {
+  padding:12px;
+  background:#4facfe;
+  border:none;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+  width:100%;
+}
+/* CHAT ICON */
+#chatIcon {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#4facfe;
+  color:white;
+  font-size:25px;
+  padding:15px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+/* CHAT BOX */
+#chatContainer {
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  width:300px;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  display:none;
+  flex-direction:column;
+}
+
+#chatHeader {
+  background:#4facfe;
+  color:white;
+  padding:10px;
+  display:flex;
+  justify-content:space-between;
+}
+
+#chatMessages {
+  height:200px;
+  overflow-y:auto;
+  padding:10px;
+  font-size:14px;
+}
+
+#chatOptions button {
+  margin:5px;
+  padding:5px;
+  cursor:pointer;
+}
+
+#chatInput {
+  width:100%;
+  padding:8px;
+  border:none;
+  border-top:1px solid #ccc;
+}
+
+/* FOOTER */
+footer { background:#111; color:#eee; padding:40px 20px; }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.jpeg">
+    <h2>Youth Talk & Solve</h2>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#topics">Problems</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+
+    <h2>Talk. Share. Solve.</h2>
+
+    <p>
+      This website is created to support students who are facing real-life problems but don’t always have someone to talk to.
+      Talk and Solve Youth is a platform where you can openly explore your thoughts, understand your challenges, and find practical solutions.
+      <br><br>
+      From study pressure and career confusion to friendship issues and relationship problems, we focus on real situations that affect youth.
+      <br><br>
+      <strong>You are not judged — you are understood.</strong>
+    </p>
+
+    <p style="margin-top:15px; color:#ffcccb;">
+      ⚠ This platform is only for guidance, not professional medical advice.
+    </p>
+
+    <button onclick="document.getElementById('topics').scrollIntoView({behavior:'smooth'})">
+      Explore Problems
+    </button>
+
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section class="section" id="topics">
+  <h2 style="text-align:center; margin-bottom:30px;">Common Youth Problems</h2>
+
+  <div class="cards">
+
+    <div class="card" onclick="toggle(this)">
+      <h3>📚 Study Problems</h3>
+      <p>Tap to read more...</p>
+      <div class="details">
+        અભ્યાસ દરમિયાન ધ્યાન ન લાગવું, પરીક્ષાનો ડર અને પ્રેશર — આ બધું સામાન્ય છે. 
+        અમે તમને સરળ રીતે માર્ગદર્શન આપીશું જેથી તમે આત્મવિશ્વાસ સાથે આગળ વધી શકો.
+      </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <h3>🧠 Teenage Problems</h3>
+      <p>Tap to read more...</p>
+      <div class="details">
+        ટીનેજમાં લાગણીઓ બદલાય છે અને ઘણી વાર ગૂંચવણ થાય છે. 
+        અમે તમને સમજીએ છીએ અને તમને મજબૂત બનવામાં મદદ કરીએ છીએ.
+      </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <h3>🏠 Home Problems</h3>
+      <p>Tap to read more...</p>
+      <div class="details">
+        ઘરમાં મતભેદ અને તણાવ — અમે તમને શાંતિથી હેન્ડલ કરવાની રીત શીખવીએ છીએ.
+      </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <h3>❓ Other Problems</h3>
+      <p>Tap to read more...</p>
+      <div class="details">
+        તમે કંઈપણ શેર કરી શકો છો — અમે તમને સમજીએ છીએ.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section" id="contact">
+  <h2 style="text-align:center;">Share Your Problem</h2>
+
+  <form onsubmit="sendToWhatsApp(event)" style="max-width:600px; margin:auto; background:white; padding:25px; border-radius:15px;">
+
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="number" id="age" placeholder="Age" required>
+    <input type="text" id="study" placeholder="Standard / College" required>
+
+    <select id="category" required>
+      <option value="">Select Category</option>
+      <option>Study</option>
+      <option>Teenage</option>
+      <option>Home</option>
+      <option>Relationship</option>
+      <option>Career</option>
+      <option>Other</option>
+    </select>
+
+    <textarea id="problem" rows="5" placeholder="Your Problem..." required></textarea>
+
+    <button type="submit">Send to WhatsApp</button>
+  </form>
+</section>
+
+<script>
+let chatHistory = "";
+
+function toggle(card){
+  let d = card.querySelector('.details');
+  d.style.display = d.style.display === 'block' ? 'none' : 'block';
+}
+
+/* CHATBOT FUNCTION */
+function sendMessage(){
+  let input = document.getElementById("userInput").value;
+  let type = document.getElementById("problemType").value;
+  let chatbox = document.getElementById("chatbox");
+
+  if(input === "" || type === "") return;
+
+  // USER MESSAGE
+  chatbox.innerHTML += `<p><b>You:</b> ${input}</p>`;
+  chatHistory += `You: ${input}\n`;
+
+  let reply = "";
+
+  // AI RESPONSES
+  if(type === "Study"){
+    reply = "I understand study pressure 😔. Try making a simple timetable, remove distractions, and study in short sessions. What is your biggest difficulty?";
+  }
+  else if(type === "Teenage"){
+    reply = "Teenage confusion is normal 💭. You are growing. Try to express your feelings and avoid overthinking. What is troubling you most?";
+  }
+  else if(type === "Home"){
+    reply = "Family problems can feel heavy 🏠. Stay calm and communicate slowly. What situation is happening at home?";
+  }
+  else{
+    reply = "I’m here to listen ❤️. Please share your problem in detail so I can guide you better.";
+  }
+
+  // BOT MESSAGE
+  setTimeout(() => {
+    chatbox.innerHTML += `<p><b>AI:</b> ${reply}</p>`;
+    chatHistory += `AI: ${reply}\n`;
+    chatbox.scrollTop = chatbox.scrollHeight;
+  }, 500);
+
+  document.getElementById("userInput").value = "";
+}
+
+/* SEND CHAT TO WHATSAPP */
+function sendToWhatsAppChat(){
+  let phone = "917623857609";
+
+  let message = encodeURIComponent("Chat Support:\n\n" + chatHistory);
+
+  window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+}
+
+/* FORM WHATSAPP */
+function sendToWhatsApp(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let age = document.getElementById("age").value;
+  let study = document.getElementById("study").value;
+  let category = document.getElementById("category").value;
+  let problem = document.getElementById("problem").value;
+
+  let phone = "917623857609";
+
+  let msg = `Name: ${name}%0AAge: ${age}%0AStudy: ${study}%0ACategory: ${category}%0AProblem: ${problem}`;
+
+  window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+}
+</script>
+
+<!-- FOOTER -->
+<footer>
+
+  <div style="max-width:1100px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px;">
+
+    <div>
+      <h3>About</h3>
+      <p>A platform to support youth with real-life guidance.</p>
+    </div>
+
+    <div>
+      <h3>Privacy</h3>
+      <p>🔒 100% private communication. Your data is safe.</p>
+    </div>
+
+    <div>
+      <h3>Trust</h3>
+      <p>Safe, supportive, and judgment-free environment.</p>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top:20px;">
+    © 2026 Youth Talk & Solve
+  </div>
+
+</footer>
+
+<script>
+function toggle(card){
+  let d = card.querySelector('.details');
+  d.style.display = d.style.display === 'block' ? 'none' : 'block';
+}
+
+function sendToWhatsApp(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let age = document.getElementById("age").value;
+  let study = document.getElementById("study").value;
+  let category = document.getElementById("category").value;
+  let problem = document.getElementById("problem").value;
+
+  let phone = "917623857609";
+
+  let msg = `Name: ${name}%0AAge: ${age}%0AStudy: ${study}%0ACategory: ${category}%0AProblem: ${problem}`;
+
+  window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+}
+</script>
+
+<!-- FLOATING CHATBOT BUTTON -->
+<div id="chatIcon" onclick="openChat()">💬</div>
+
+<!-- CHATBOX -->
+<div id="chatContainer">
+
+  <div id="chatHeader">
+    AI Support
+    <span onclick="closeChat()">✖</span>
+  </div>
+
+  <div id="chatMessages"></div>
+
+  <div id="chatOptions"></div>
+
+  <input type="text" id="chatInput" placeholder="Type your message...">
+  <button onclick="sendChat()">Send</button>
+
+  <button onclick="sendChatToWhatsApp()" style="background:green;">
+    Send to WhatsApp
+  </button>
+
+</div>
+<script>
+let chatHistory = "";
+let selectedProblem = "";
+let chatStarted = false;
+
+/* TOGGLE CARDS */
+function toggle(card){
+  let d = card.querySelector('.details');
+  d.style.display = d.style.display === 'block' ? 'none' : 'block';
+}
+
+/* FORM WHATSAPP */
+function sendToWhatsApp(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let age = document.getElementById("age").value;
+  let study = document.getElementById("study").value;
+  let category = document.getElementById("category").value;
+  let problem = document.getElementById("problem").value;
+
+  let phone = "917623857609";
+
+  let msg = `Name: ${name}%0AAge: ${age}%0AStudy: ${study}%0ACategory: ${category}%0AProblem: ${problem}`;
+
+  window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+}
+
+/* OPEN CHAT */
+function openChat(){
+  let box = document.getElementById("chatContainer");
+  box.style.display = "flex";
+
+  if(!chatStarted){
+    startChat();
+    chatStarted = true;
+  }
+}
+
+/* CLOSE CHAT */
+function closeChat(){
+  document.getElementById("chatContainer").style.display = "none";
+}
+
+/* START CHAT */
+function startChat(){
+  let msgBox = document.getElementById("chatMessages");
+  let optBox = document.getElementById("chatOptions");
+
+  msgBox.innerHTML = "<p><b>AI:</b> Hi 👋 Please select your problem:</p>";
+
+  optBox.innerHTML = `
+    <button onclick="selectProblem('Study')">📚 Study</button>
+    <button onclick="selectProblem('Teenage')">🧠 Teenage</button>
+    <button onclick="selectProblem('Home')">🏠 Home</button>
+    <button onclick="selectProblem('Other')">❓ Other</button>
+  `;
+}
+
+/* SELECT PROBLEM */
+function selectProblem(type){
+  selectedProblem = type;
+
+  let msgBox = document.getElementById("chatMessages");
+  let optBox = document.getElementById("chatOptions");
+
+  msgBox.innerHTML += `<p><b>You:</b> ${type}</p>`;
+
+  let reply = {
+    "Study": "Study Problems 📚 — Tell me: focus issue, exam stress, or time management?",
+    "Teenage": "Teenage Problems 🧠 — Overthinking, emotions, or confusion?",
+    "Home": "Home Problems 🏠 — Arguments, pressure, or misunderstanding?",
+    "Other": "Tell me your problem in detail."
+  };
+
+  msgBox.innerHTML += `<p><b>AI:</b> ${reply[type]}</p>`;
+  optBox.innerHTML = "";
+}
+
+/* CHAT */
+function sendChat(){
+  let input = document.getElementById("chatInput").value;
+  let msgBox = document.getElementById("chatMessages");
+
+  if(input === "") return;
+
+  msgBox.innerHTML += `<p><b>You:</b> ${input}</p>`;
+  chatHistory += `You: ${input}\n`;
+
+  let reply = "";
+
+  if(selectedProblem === "Study"){
+    reply = "Try Pomodoro method (25 min study), remove distractions, and revise daily.";
+  }
+  else if(selectedProblem === "Teenage"){
+    reply = "It’s normal. Talk to someone you trust and avoid overthinking.";
+  }
+  else if(selectedProblem === "Home"){
+    reply = "Stay calm and communicate clearly. Respect + patience solves problems.";
+  }
+  else{
+    reply = "I understand. Stay strong 💪 You can share more details.";
+  }
+
+  setTimeout(()=>{
+    msgBox.innerHTML += `<p><b>AI:</b> ${reply}</p>`;
+    chatHistory += `AI: ${reply}\n`;
+    msgBox.scrollTop = msgBox.scrollHeight;
+  },500);
+
+  document.getElementById("chatInput").value = "";
+}
+
+/* SEND CHAT TO WHATSAPP */
+function sendChatToWhatsApp(){
+  let phone = "917623857609";
+  let msg = encodeURIComponent("User Chat:\n\n" + chatHistory);
+  window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+}
+</script>
+
+</body>
+</html>
